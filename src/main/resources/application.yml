@@ -1,0 +1,57 @@
+server:
+  port: 8080
+  session-timeout: 1800
+
+spring:
+    datasource:
+        name: beaty
+        url: jdbc:mysql://139.199.113.220:3306/beaty?characterEncoding=UTF-8
+        username: root
+        password: 6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+    servlet:
+      multipart:
+        max-file-size: 20Mb
+    redis:
+      database: 0
+      host: 127.0.0.1
+      port: 6379
+      password: 0
+      timeout: 0
+    server:
+
+
+#logging:
+#  level:
+#    root: warn
+
+
+# 系统日志类别dev:开发模式不拦截方法记日志, custom:客户自定义需要拦截记日志的方法, sys:系统原设需要拦截记日志的方法
+sysLogType: dev
+restPath: /api
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+#shiro缓存机制
+cachetype: redis
+#jwt
+adminUrl: http://localhost:8080/login
+jwt:
+  token:
+        name: authtoken
